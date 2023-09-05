@@ -1,4 +1,4 @@
-from subrina.subtime import srt_time
+from subrina.subtime import srt_time, srt_time_to_ms
 import pytest
 
 srt_time_data = [
@@ -39,3 +39,8 @@ srt_time_data = [
 @pytest.mark.parametrize("time,expected", srt_time_data)
 def test_srt_time(time, expected):
     assert srt_time(time) == expected
+
+
+@pytest.mark.parametrize("time,srt_time_string", srt_time_data)
+def test_srt_time_to_ms(time, srt_time_string):
+    assert srt_time_to_ms(srt_time_string) == time
